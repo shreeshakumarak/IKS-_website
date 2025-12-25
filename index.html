@@ -31,9 +31,21 @@
         .markdown-body p { margin-bottom: 0.5em; }
         .markdown-body strong { font-weight: 600; color: #92400e; }
         
-        /* Chat Widget Animation */
-        .chat-enter { opacity: 0; transform: translateY(20px); }
-        .chat-enter-active { opacity: 1; transform: translateY(0); transition: all 0.3s ease-out; }
+        /* Custom Scrollbar for Timeline */
+        .timeline-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .timeline-scroll::-webkit-scrollbar-track {
+            background: #f5f5f4;
+            border-radius: 4px;
+        }
+        .timeline-scroll::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 4px;
+        }
+        .timeline-scroll::-webkit-scrollbar-thumb:hover {
+            background: #b45309;
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
@@ -48,12 +60,13 @@
                         Shilpa<span class="text-amber-700">Vijnana</span>
                     </span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-stone-600 hover:text-amber-700 transition-colors">Home</a>
-                    <a href="#temples" class="text-stone-600 hover:text-amber-700 transition-colors">Temple Architecture</a>
-                    <a href="#hoysala" class="text-stone-600 hover:text-amber-700 transition-colors">Hoysala Architecture</a>
-                    <a href="#planner" class="text-stone-600 hover:text-amber-700 transition-colors font-medium">Yatra Planner ✨</a>
-                    <a href="#about" class="text-stone-600 hover:text-amber-700 transition-colors font-medium">About Us</a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-stone-600 hover:text-amber-700 transition-colors text-sm">Home</a>
+                    <a href="#temples" class="text-stone-600 hover:text-amber-700 transition-colors text-sm">Temples</a>
+                    <a href="#timeline" class="text-stone-600 hover:text-amber-700 transition-colors text-sm">Timeline</a>
+                    <a href="#quiz" class="text-stone-600 hover:text-amber-700 transition-colors text-sm">Quiz</a>
+                    <a href="#glossary" class="text-stone-600 hover:text-amber-700 transition-colors text-sm">Glossary</a>
+                    <a href="#planner" class="px-4 py-2 bg-amber-100 text-amber-800 rounded-full hover:bg-amber-200 transition-colors font-semibold text-sm">Yatra Planner ✨</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-stone-600 hover:text-stone-900 focus:outline-none">
@@ -66,10 +79,10 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-stone-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Home</a>
-                <a href="#temples" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Temple Architecture</a>
-                <a href="#hoysala" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Hoysala Architecture</a>
+                <a href="#temples" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Temples</a>
+                <a href="#timeline" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Timeline</a>
+                <a href="#quiz" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Quiz</a>
                 <a href="#planner" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md">Yatra Planner</a>
-                <a href="#about" class="block px-3 py-2 text-stone-600 hover:bg-stone-50 hover:text-amber-700 rounded-md font-bold">About Us</a>
             </div>
         </div>
     </nav>
@@ -89,8 +102,8 @@
                     <a href="#temples" class="px-8 py-3 bg-amber-700 text-white rounded-lg font-semibold hover:bg-amber-800 transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-amber-700/20">
                         Explore Temples
                     </a>
-                    <a href="#planner" class="px-8 py-3 bg-white text-stone-700 border border-stone-300 rounded-lg font-semibold hover:bg-stone-50 transition-colors">
-                        Plan Yatra ✨
+                    <a href="#quiz" class="px-8 py-3 bg-white text-stone-700 border border-stone-300 rounded-lg font-semibold hover:bg-stone-50 transition-colors">
+                        Take the Quiz 🎓
                     </a>
                 </div>
             </div>
@@ -111,7 +124,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="Sringeritemple.jpg" alt="Sringeri Sharadamba" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="Sringeritemple.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Sringeri_Sharada_Peetham_Temple_Complex.jpg/1200px-Sringeri_Sharada_Peetham_Temple_Complex.jpg'" alt="Sringeri Sharadamba" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Sharadamba Temple</h3>
@@ -138,7 +151,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="srirangapatna.jpg" alt="Srirangapatna" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="srirangapatna.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/4e/Ranganathaswamy_Temple_Srirangapatna.jpg'" alt="Srirangapatna" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Sri Ranganathaswamy Temple</h3>
@@ -165,7 +178,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="MELUKOTE.jpg" alt="Melukote" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="MELUKOTE.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/e0/Cheluvanarayana_Swamy_Temple_Melukote.jpg'" alt="Melukote" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Cheluvanarayana Swamy Temple</h3>
@@ -192,7 +205,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="Kukke-Shree-Subramanya.jpg" alt="Kukke Subramanya" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="Kukke-Shree-Subramanya.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/05/Kukke_Subramanya_Temple.jpg'" alt="Kukke Subramanya" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Kukke Subramanya Temple</h3>
@@ -219,7 +232,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="chamundi mysuru.jpg" alt="Chamundeshwari" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="chamundi mysuru.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/5a/Chamundeshwari_Temple_Mysore.jpg'" alt="Chamundeshwari" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Chamundeshwari Temple</h3>
@@ -246,7 +259,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="pattadakallu.jpg" alt="Pattadakal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="pattadakallu.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/2/29/Pattadakal_temple_complex.jpg'" alt="Pattadakal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Pattadakal Monuments</h3>
@@ -273,7 +286,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="mookambika.jpg" alt="Mookambika" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="mookambika.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/1/15/Kollur_Mookambika_Temple.jpg'" alt="Mookambika" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Mookambika Temple</h3>
@@ -300,7 +313,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="virupaksha.jpg" alt="Hampi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="virupaksha.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/4b/Virupaksha_Temple_Hampi.jpg'" alt="Hampi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Virupaksha Temple</h3>
@@ -327,7 +340,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="konark 1.jpg" alt="Konark Sun Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="konark 1.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/47/Konarka_Temple.jpg'" alt="Konark Sun Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">The Sun Temple, Konark</h3>
@@ -355,7 +368,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="Brih1.jpg" alt="Brihadeeswarar Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="Brih1.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/eb/Thanjavur_Temple.jpg'" alt="Brihadeeswarar Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Brihadeeswarar Temple</h3>
@@ -383,7 +396,7 @@
              <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="chenna.jpg" alt="Chennakeshava Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="chenna.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/9e/Chennakeshava_Temple_Belur.jpg'" alt="Chennakeshava Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Chennakeshava Temple</h3>
@@ -411,7 +424,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="kailasa.jpg" alt="Kailasa Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="kailasa.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/d/d3/Kailasa_temple_ellora_caves_3.jpg'" alt="Kailasa Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Kailasa Temple</h3>
@@ -438,7 +451,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="meenakshi.jpg" alt="Meenakshi Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="meenakshi.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/32/Meenakshi_Amman_Temple_1.jpg'" alt="Meenakshi Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Meenakshi Amman Temple</h3>
@@ -465,7 +478,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="kandariya.jpg" alt="Khajuraho" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="kandariya.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/8/82/Kandariya_Mahadeva_Temple.jpg'" alt="Khajuraho" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Kandariya Mahadeva Temple</h3>
@@ -488,11 +501,11 @@
                 </div>
             </div>
 
-             <!-- 15. Ranakpur Jain Temple -->
-             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
+            <!-- 15. Ranakpur Jain Temple -->
+            <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="ranakpur.jpg" alt="Ranakpur" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="ranakpur.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/ed/Ranakpur_Jain_Temple.jpg'" alt="Ranakpur" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Ranakpur Jain Temple</h3>
@@ -519,7 +532,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="kedarnath.jpg" alt="Kedarnath" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="kedarnath.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Kedarnath_Temple_Uttarakhand.jpg'" alt="Kedarnath" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Kedarnath Temple</h3>
@@ -546,7 +559,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="padmanabhaswamy.jpg" alt="Padmanabhaswamy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="padmanabhaswamy.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/7b/Padmanabhaswamy_Temple.jpg'" alt="Padmanabhaswamy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Sree Padmanabhaswamy Temple</h3>
@@ -573,7 +586,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="ramnathaswamy.jpg" alt="Rameshwaram" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="ramnathaswamy.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/1/1a/Ramanathaswamy_Temple_Corridor.jpg'" alt="Rameshwaram" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Ramanathaswamy Temple</h3>
@@ -600,7 +613,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="lingaraja.jpg" alt="Lingaraja" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="lingaraja.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/e0/Lingaraja_Temple_Bhubaneswar.jpg'" alt="Lingaraja" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Lingaraja Temple</h3>
@@ -627,7 +640,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="modhera sun.jpg" alt="Modhera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="modhera sun.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/4/46/Modhera_Sun_Temple.jpg'" alt="Modhera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Modhera Sun Temple</h3>
@@ -654,7 +667,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="sanchi.jpg" alt="Sanchi Stupa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="sanchi.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/e0/Sanchi_Stupa_from_Eastern_gate.jpg'" alt="Sanchi Stupa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">The Great Stupa at Sanchi</h3>
@@ -681,7 +694,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="shore.jpg" alt="Shore Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="shore.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/9e/Shore_Temple_Mahabalipuram.jpg'" alt="Shore Temple" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Shore Temple</h3>
@@ -708,7 +721,7 @@
             <div class="flex flex-col md:flex-row items-center gap-10 mb-20 border-b border-stone-200 pb-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="lepakshi.jpg" alt="Lepakshi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="lepakshi.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/91/Lepakshi_Nandi.jpg'" alt="Lepakshi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Veerabhadra Temple, Lepakshi</h3>
@@ -735,7 +748,7 @@
             <div class="flex flex-col md:flex-row-reverse items-center gap-10">
                 <div class="w-full md:w-1/2">
                     <div class="relative rounded-xl overflow-hidden shadow-2xl h-80 group">
-                        <img src="ajanta.jpg" alt="Ajanta Caves" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <img src="ajanta.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/9d/Ajanta_Caves_Panorama.jpg'" alt="Ajanta Caves" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                             <div class="p-6 text-white">
                                 <h3 class="text-xl font-bold">Ajanta Caves</h3>
@@ -761,13 +774,93 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: HOYSALA ARCHITECTURE -->
+    <!-- NEW FEATURE 1: CHRONICLES OF STONE (TIMELINE) -->
+    <section id="timeline" class="py-20 bg-stone-900 text-stone-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-amber-500 font-bold tracking-widest uppercase text-sm">Chronology</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Chronicles of Stone</h2>
+                <p class="text-stone-400">Scroll through the golden ages of Indian Architecture.</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-stone-700 -translate-y-1/2 z-0 hidden md:block"></div>
+                
+                <!-- Scroll Container -->
+                <div class="timeline-scroll flex overflow-x-auto gap-8 pb-8 pt-4 px-4 snap-x snap-mandatory z-10 relative">
+                    
+                    <!-- Era 1 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">300 BCE - 200 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Mauryan & Early Buddhist</h3>
+                        <p class="text-stone-400 text-sm mb-4">Rock-cut caves and Stupas. Focus on durability and wood-imitation.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Sanchi Stupa, Ajanta (Early)
+                        </div>
+                    </div>
+
+                    <!-- Era 2 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">600 CE - 850 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Pallava & Chalukya</h3>
+                        <p class="text-stone-400 text-sm mb-4">Birth of structural temples. Fusion of North and South styles.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Mahabalipuram, Pattadakal
+                        </div>
+                    </div>
+
+                    <!-- Era 3 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">850 CE - 1250 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Chola Dynasty</h3>
+                        <p class="text-stone-400 text-sm mb-4">Grand Dravidian vimanas. Engineering heights never seen before.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Brihadeeswarar, Gangaikonda
+                        </div>
+                    </div>
+
+                    <!-- Era 4 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">950 CE - 1050 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Chandela (Nagara)</h3>
+                        <p class="text-stone-400 text-sm mb-4">Peak of Nagara style. Curvilinear spires representing mountains.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Khajuraho Group
+                        </div>
+                    </div>
+
+                    <!-- Era 5 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">1000 CE - 1350 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Hoysala Empire</h3>
+                        <p class="text-stone-400 text-sm mb-4">Stellate plans and soapstone intricacy. Poetry in stone.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Belur, Halebidu, Somanathapura
+                        </div>
+                    </div>
+
+                    <!-- Era 6 -->
+                    <div class="min-w-[300px] bg-stone-800 rounded-xl p-6 border border-stone-700 snap-center shadow-lg hover:border-amber-600 transition-colors">
+                        <div class="text-amber-500 font-bold text-xl mb-2">1336 CE - 1646 CE</div>
+                        <h3 class="text-white font-bold text-lg mb-2">Vijayanagara</h3>
+                        <p class="text-stone-400 text-sm mb-4">Grand gopurams, musical pillars, and expansive complexes.</p>
+                        <div class="flex items-center gap-2 text-xs text-amber-200">
+                            <i class="fas fa-monument"></i> Hampi (Virupaksha), Lepakshi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hoysala Architecture Section -->
     <section id="hoysala" class="py-20 bg-amber-50 pattern-bg border-t border-amber-200/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Hoysala Architecture</h2>
                 <p class="text-lg text-stone-600 max-w-3xl mx-auto">
-                    Known as "Poetry in Stone," the Hoysala style (11th–14th century) is distinguished by its star-shaped (stellate) plans and the use of Chloritic Schist (soapstone), allowing for unprecedented intricacy.
+                    Known as "Poetry in Stone," the Hoysala style (11th–14th century) is distinguished by its star-shaped (stellate) plans and the use of Chloritic Schist (soapstone).
                 </p>
             </div>
 
@@ -775,25 +868,24 @@
                 <!-- 1. Hoysaleswara Temple -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="hoysaleshwara.jpg" alt="Hoysaleswara Temple" class="w-full h-full object-cover">
+                        <img src="hoysaleshwara.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/e0/Hoysaleswara_Temple_Halebidu.jpg'" alt="Hoysaleswara Temple" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Halebidu</div>
                     </div>
                     <div class="p-8 flex-grow">
                         <h3 class="text-2xl font-bold text-stone-900 mb-3">Hoysaleswara Temple</h3>
                         <p class="text-stone-600 mb-4 text-sm leading-relaxed">
-                            Dedicated to Lord Shiva, this twin-temple complex is famous for its outer walls which feature thousands of elephants, lions, and horses in horizontal friezes, no two of which are alike.
+                            Dedicated to Lord Shiva, this twin-temple complex is famous for its outer walls which feature thousands of elephants, lions, and horses in horizontal friezes.
                         </p>
                         <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Double Shrine:</strong> Features two sanctums (Dvikuta) connected by a central hall.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>3D Carvings:</strong> The wall sculptures are carved with such depth that they appear almost detached from the wall.</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Double Shrine:</strong> Features two sanctums (Dvikuta).</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- 2. Keshava Temple, Somanathapura -->
+                <!-- 2. Keshava Temple -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="keshava.jpg" alt="Chennakeshava Somanathapura" class="w-full h-full object-cover">
+                        <img src="keshava.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/c/c5/Keshava_Temple_Somanathapura.jpg'" alt="Chennakeshava Somanathapura" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Somanathapura</div>
                     </div>
                     <div class="p-8 flex-grow">
@@ -801,17 +893,13 @@
                         <p class="text-stone-600 mb-4 text-sm leading-relaxed">
                             The pinnacle of Hoysala symmetry. Built in 1268 CE, it is a Trikuta (three-towered) temple. The ceiling domes are famous for representing different stages of a banana flower opening.
                         </p>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Stellate Plan:</strong> The platform follows the star shape of the shrines perfectly, creating a jagged, dramatic shadow pattern.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Ceilings:</strong> Contains 16 different types of ceiling designs, all mathematically complex.</li>
-                        </ul>
                     </div>
                 </div>
 
                 <!-- 3. Veera Narayana Temple, Belavadi -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="veera.jpg" alt="Veera Narayana Temple Belavadi" class="w-full h-full object-cover">
+                        <img src="veera.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/a/ad/Vira_Narayana_Temple_Belavadi.jpg'" alt="Veera Narayana Temple Belavadi" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Belavadi</div>
                     </div>
                     <div class="p-8 flex-grow">
@@ -820,8 +908,7 @@
                             Older than the Somanathapura temple, this Trikuta temple is a masterpiece of symmetry. It houses a magnificent 7-foot tall idol of Venugopala Krishna playing the flute.
                         </p>
                         <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>108 Pillars:</strong> The temple is famous for its large open mantapa featuring 108 lathe-turned, bell-shaped pillars, each with a glossy finish.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Tri-Deity:</strong> Dedicated to three forms of Vishnu: Veera Narayana, Venugopala, and Yoganarasimha.</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>108 Pillars:</strong> The temple is famous for its large open mantapa featuring 108 lathe-turned, bell-shaped pillars.</li>
                         </ul>
                     </div>
                 </div>
@@ -829,7 +916,7 @@
                 <!-- 4. Amrutesvara Temple, Amruthapura -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="amrutheshwara.jpg" alt="Amrutesvara Temple" class="w-full h-full object-cover">
+                        <img src="amrutheshwara.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/e/ec/Amrutesvara_Temple_Amruthapura.jpg'" alt="Amrutesvara Temple" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Amruthapura</div>
                     </div>
                     <div class="p-8 flex-grow">
@@ -837,17 +924,13 @@
                         <p class="text-stone-600 mb-4 text-sm leading-relaxed">
                             Built in 1196 CE by Amrutheshwara Dandanayaka. This temple is unique for using a darker variety of soapstone and features walls that are not as crowded with sculptures as Halebidu, giving it a serene look.
                         </p>
-                        <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Shining Pillars:</strong> The pillars in the open hall have retained their original mirror-like polish for over 800 years.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Miniature Towers:</strong> The outer walls are decorated with 140 panel sculptures of miniature temple towers (Shikharas).</li>
-                        </ul>
                     </div>
                 </div>
 
                 <!-- 5. Ishvara Temple, Arasikere -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="ishvara.jpg" alt="Ishvara Temple Arasikere" class="w-full h-full object-cover">
+                        <img src="ishvara.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/8/87/Ishvara_Temple_Arasikere.jpg'" alt="Ishvara Temple Arasikere" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Arasikere</div>
                     </div>
                     <div class="p-8 flex-grow">
@@ -856,8 +939,7 @@
                             A hidden gem of complexity. Built around 1220 CE, this temple represents the zenith of the stellate design. Unlike the typical 16-sided star plans, this temple features a complicated 16-pointed star plan for the sanctum.
                         </p>
                         <ul class="space-y-2 text-stone-700 text-sm">
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>16-Pointed Star:</strong> The most complex ground plan in Hoysala architecture, resembling a spinning top.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Unique Dome:</strong> The open hall (Navaranga) features a unique 16-sided dome, an architectural feature rare in this style.</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Unique Dome:</strong> The open hall (Navaranga) features a unique 16-sided dome.</li>
                         </ul>
                     </div>
                 </div>
@@ -865,21 +947,64 @@
                 <!-- 6. Lakshmi Devi Temple, Doddagaddavalli -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-amber-100 hover:shadow-2xl transition-shadow duration-300 flex flex-col">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="laxmidevi.jpg" alt="Lakshmi Devi Temple" class="w-full h-full object-cover">
+                        <img src="laxmidevi.jpg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/7/77/Lakshmi_Devi_Temple_Doddagaddavalli.jpg'" alt="Lakshmi Devi Temple" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 bg-amber-700/90 text-white px-4 py-1 text-sm font-bold rounded-tr-lg">Doddagaddavalli</div>
                     </div>
                     <div class="p-8 flex-grow">
                         <h3 class="text-2xl font-bold text-stone-900 mb-3">Lakshmi Devi Temple</h3>
                         <p class="text-stone-600 mb-4 text-sm leading-relaxed">
-                            The genesis of the style. Constructed in 1114 CE by a merchant named Kullahana Rahuta, it is one of the earliest known Hoysala temples. Unlike later soapstone temples, this was built using Chloritic Schist but with restrained elegance.
+                            The genesis of the style. Constructed in 1114 CE, it is one of the earliest known Hoysala temples. Unlike later soapstone temples, this was built using Chloritic Schist but with restrained elegance.
                         </p>
                         <ul class="space-y-2 text-stone-700 text-sm">
                             <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Chatushkuta:</strong> A rare four-shrined temple dedicated to Lakshmi, Kali, Vishnu, and Bhoodevi.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-star text-amber-600 mt-1"></i> <strong>Transitional Art:</strong> Marks the transition from Western Chalukya to the distinct Hoysala style.</li>
                         </ul>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW FEATURE 2: THE STHAPATI CHALLENGE (QUIZ) -->
+    <section id="quiz" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-stone-900">The Sthapati Challenge 🧠</h2>
+                <p class="mt-4 text-stone-600">Test your knowledge of Indian Sacred Architecture.</p>
+            </div>
+
+            <div class="bg-stone-50 rounded-2xl shadow-lg border border-stone-200 overflow-hidden relative" id="quiz-container">
+                <!-- Progress Bar -->
+                <div class="w-full bg-stone-200 h-2">
+                    <div id="quiz-progress" class="bg-amber-600 h-2 transition-all duration-300" style="width: 0%"></div>
+                </div>
+
+                <div class="p-8">
+                    <!-- Question Area -->
+                    <div id="question-screen">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="text-xs font-bold text-amber-700 bg-amber-100 px-3 py-1 rounded-full" id="q-number">Question 1/5</span>
+                            <span class="text-stone-500 text-sm font-medium" id="current-score">Score: 0</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-stone-800 mb-8" id="question-text">Loading...</h3>
+                        <div class="space-y-3" id="options-container">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Result Area (Hidden initially) -->
+                    <div id="result-screen" class="hidden text-center py-8">
+                        <div class="mb-6">
+                            <i class="fas fa-trophy text-5xl text-amber-500 mb-4"></i>
+                            <h3 class="text-3xl font-bold text-stone-800 mb-2">Challenge Complete!</h3>
+                            <p class="text-stone-600">You scored <span id="final-score" class="font-bold text-amber-700 text-xl"></span></p>
+                        </div>
+                        <p id="result-message" class="text-stone-800 font-medium mb-8">Great job!</p>
+                        <button onclick="restartQuiz()" class="px-6 py-2 bg-stone-800 text-white rounded-lg hover:bg-stone-900 transition-colors">
+                            Try Again
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -933,13 +1058,32 @@
         </div>
     </section>
 
+    <!-- NEW FEATURE 3: SHILPA-KOSHA (GLOSSARY) -->
+    <section id="glossary" class="py-20 bg-stone-900 text-stone-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">Shilpa-Kosha 📖</h2>
+                    <p class="text-stone-400">Glossary of Sacred Architectural Terms</p>
+                </div>
+                <div class="relative w-full md:w-1/3">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-500"></i>
+                    <input type="text" id="glossarySearch" placeholder="Search terms..." class="w-full bg-stone-800 border border-stone-700 text-white pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:border-amber-500 transition-colors">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="glossary-grid">
+                <!-- Terms injected by JS -->
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="py-20 bg-stone-100 pattern-bg">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-stone-200">
                 <div class="md:flex">
                     <div class="bg-amber-800 md:w-1/3 p-8 flex flex-col justify-center text-white text-center md:text-left relative overflow-hidden">
-                        <!-- Decorative circle -->
                         <div class="absolute -top-10 -left-10 w-32 h-32 bg-amber-700 rounded-full opacity-50"></div>
                         <div class="relative z-10">
                             <div class="mb-6">
@@ -1005,7 +1149,7 @@
                     <ul class="space-y-2 text-stone-400 text-sm">
                         <li><a href="#home" class="hover:text-amber-500 transition-colors">Home</a></li>
                         <li><a href="#temples" class="hover:text-amber-500 transition-colors">Temples</a></li>
-                        <li><a href="#about" class="hover:text-amber-500 transition-colors">Team</a></li>
+                        <li><a href="#quiz" class="hover:text-amber-500 transition-colors">Quiz</a></li>
                         <li><a href="https://rvce.edu.in/" target="_blank" class="hover:text-amber-500 transition-colors">RVCE Website</a></li>
                     </ul>
                 </div>
@@ -1024,16 +1168,12 @@
         </div>
     </footer>
 
-    <!-- GEMINI CHAT WIDGET HTML -->
+    <!-- GEMINI CHAT WIDGET -->
     <div class="fixed bottom-6 right-6 z-50">
-        <!-- Chat Button -->
         <button id="chatToggleBtn" class="bg-amber-700 hover:bg-amber-800 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110 flex items-center justify-center w-16 h-16 border-2 border-white">
             <i class="fas fa-comments text-2xl"></i>
         </button>
-
-        <!-- Chat Window -->
         <div id="chatWindow" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col transition-all duration-300 transform scale-95 origin-bottom-right" style="height: 500px;">
-            <!-- Header -->
             <div class="bg-amber-700 p-4 text-white flex justify-between items-center">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -1048,20 +1188,16 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
-            <!-- Messages Area -->
             <div id="chatMessages" class="flex-1 p-4 overflow-y-auto bg-stone-50 space-y-4">
                 <div class="flex gap-2">
                     <div class="w-8 h-8 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center text-amber-700">
                         <i class="fas fa-robot text-xs"></i>
                     </div>
                     <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-stone-700 border border-stone-200">
-                        Namaste! I am your AI guide to Indian Temple Architecture. Ask me about the history, design styles, or engineering mysteries of these sacred structures.
+                        Namaste! I am your AI guide to Indian Temple Architecture. Ask me about the history, design styles, or engineering mysteries.
                     </div>
                 </div>
             </div>
-
-            <!-- Input Area -->
             <div class="p-3 bg-white border-t border-stone-200">
                 <div class="flex gap-2">
                     <input type="text" id="chatInput" placeholder="Ask about temple history..." class="flex-1 px-4 py-2 rounded-full border border-stone-300 focus:outline-none focus:border-amber-600 text-sm">
@@ -1077,38 +1213,29 @@
         // Mobile menu toggle
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
 
         // --- GEMINI API INTEGRATION ---
-        
-        const apiKey = "AIzaSyCXoLGHl1R8jb7BNDCiGT9eJ49O3YUsT1w"; // API Key injected by environment
+        const apiKey = "AIzaSyAIApZ9eGxeo6zscW38yJX2mmsSJPEqctQ"; // API Key injected by environment
 
         async function callGemini(prompt) {
             if (!apiKey) {
                 alert("API Key is missing. Please check configuration.");
                 return null;
             }
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-            
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
-                contents: [{
-                    parts: [{ text: prompt }]
-                }]
+                contents: [{ parts: [{ text: prompt }] }]
             };
-
             try {
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-
                 if (!response.ok) throw new Error(`API Error: ${response.status}`);
-                
                 const data = await response.json();
                 return data.candidates[0].content.parts[0].text;
             } catch (error) {
@@ -1116,6 +1243,146 @@
                 return "I apologize, but I am unable to connect to the knowledge source at this moment. Please try again later.";
             }
         }
+
+        // --- QUIZ LOGIC ---
+        const questions = [
+            {
+                q: "Which temple is known for the 'Camera Obscura' effect in its Gopuram?",
+                options: ["Brihadeeswarar Temple", "Virupaksha Temple", "Konark Sun Temple", "Meenakshi Amman Temple"],
+                answer: 1
+            },
+            {
+                q: "The 'Stellate' (star-shaped) plan is a hallmark of which architectural style?",
+                options: ["Chola", "Pallava", "Hoysala", "Nagara"],
+                answer: 2
+            },
+            {
+                q: "What is the massive capstone atop the Brihadeeswarar Temple called?",
+                options: ["Kalasha", "Amalaka", "Kumbam", "Stupi"],
+                answer: 2
+            },
+            {
+                q: "The Kailasa Temple at Ellora is unique because:",
+                options: ["It is built of bricks", "It is carved top-down from a single rock", "It has no idols", "It was built in 1 year"],
+                answer: 1
+            },
+            {
+                q: "Which temple features musical pillars that produce the 7 classical notes?",
+                options: ["Vittala Temple (Hampi) / Meenakshi", "Konark", "Khajuraho", "Sanchi"],
+                answer: 0
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            if (currentQ >= questions.length) {
+                showResults();
+                return;
+            }
+            const q = questions[currentQ];
+            document.getElementById('q-number').textContent = `Question ${currentQ + 1}/${questions.length}`;
+            document.getElementById('current-score').textContent = `Score: ${score}`;
+            document.getElementById('question-text').textContent = q.q;
+            document.getElementById('quiz-progress').style.width = `${((currentQ) / questions.length) * 100}%`;
+            
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-lg border border-stone-200 hover:bg-amber-50 hover:border-amber-300 transition-all font-medium text-stone-700";
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIdx, btnElement) {
+            const correctIdx = questions[currentQ].answer;
+            const buttons = document.getElementById('options-container').children;
+            
+            // Disable all buttons
+            for(let btn of buttons) btn.disabled = true;
+
+            if (selectedIdx === correctIdx) {
+                btnElement.classList.remove('hover:bg-amber-50', 'border-stone-200');
+                btnElement.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                score += 10;
+            } else {
+                btnElement.classList.remove('hover:bg-amber-50', 'border-stone-200');
+                btnElement.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                // Highlight correct
+                buttons[correctIdx].classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+            }
+
+            currentQ++;
+            setTimeout(loadQuiz, 1500);
+        }
+
+        function showResults() {
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').textContent = `${score} / ${questions.length * 10}`;
+            document.getElementById('quiz-progress').style.width = '100%';
+            
+            let msg = "Keep learning!";
+            if(score > 40) msg = "Outstanding! You are a true Sthapati!";
+            else if(score > 20) msg = "Good knowledge! A bit more study and you'll be an expert.";
+            document.getElementById('result-message').textContent = msg;
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('question-screen').classList.remove('hidden');
+            loadQuiz();
+        }
+
+        // Initialize Quiz
+        loadQuiz();
+
+
+        // --- GLOSSARY LOGIC ---
+        const glossaryTerms = [
+            { term: "Gopuram", def: "A monumental entrance tower, usually ornate, at the entrance of a Hindu temple, prominent in Dravidian architecture." },
+            { term: "Vimana", def: "The structure over the inner sanctum. In Nagara style, it's curvy; in Dravida style, it's pyramidal." },
+            { term: "Mandapa", def: "A pillared hall or pavilion for public rituals." },
+            { term: "Garbhagriha", def: "The 'womb chamber' or inner sanctum where the primary deity resides." },
+            { term: "Shikhara", def: "The rising tower in the Hindu temple architecture of North India (Nagara)." },
+            { term: "Amalaka", def: "A stone disk, segmented or notched, usually sits on the top of the main tower (Shikhara)." },
+            { term: "Kalasha", def: "A metal or stone pot-finial at the top of the temple." },
+            { term: "Stellate", def: "Star-shaped plan, typical of Hoysala architecture." },
+            { term: "Dravida", def: "South Indian temple style marked by pyramidal towers and large gopurams." },
+            { term: "Nagara", def: "North Indian temple style marked by curvilinear beehive-shaped towers." },
+            { term: "Vesara", def: "A hybrid style combining Nagara and Dravida elements (e.g., Chalukya architecture)." },
+            { term: "Jagati", def: "A raised surface, platform or terrace upon which the temple is placed." }
+        ];
+
+        function renderGlossary(filter = "") {
+            const grid = document.getElementById('glossary-grid');
+            grid.innerHTML = "";
+            const filtered = glossaryTerms.filter(t => t.term.toLowerCase().includes(filter.toLowerCase()) || t.def.toLowerCase().includes(filter.toLowerCase()));
+            
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-stone-800 p-5 rounded-lg border border-stone-700 hover:border-amber-600 transition-colors";
+                card.innerHTML = `
+                    <h4 class="text-amber-500 font-bold text-lg mb-2">${item.term}</h4>
+                    <p class="text-stone-300 text-sm leading-relaxed">${item.def}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        document.getElementById('glossarySearch').addEventListener('keyup', (e) => {
+            renderGlossary(e.target.value);
+        });
+
+        renderGlossary();
+
 
         // --- YATRA PLANNER LOGIC ---
 
@@ -1131,7 +1398,6 @@
                 return;
             }
 
-            // UI Updates
             loader.classList.remove('hidden');
             resultDiv.classList.add('hidden');
             document.getElementById('planBtn').disabled = true;
@@ -1146,7 +1412,6 @@
 
             const response = await callGemini(prompt);
 
-            // UI Updates
             loader.classList.add('hidden');
             document.getElementById('planBtn').disabled = false;
             
@@ -1165,7 +1430,6 @@
         const sendMessageBtn = document.getElementById('sendMessageBtn');
         const chatMessages = document.getElementById('chatMessages');
 
-        // Toggle Window
         chatToggleBtn.addEventListener('click', () => {
             chatWindow.classList.remove('hidden');
             chatToggleBtn.classList.add('hidden');
@@ -1176,15 +1440,12 @@
             chatToggleBtn.classList.remove('hidden');
         });
 
-        // Add Message to UI
         function addMessage(text, isUser = false) {
             const div = document.createElement('div');
             div.className = `flex gap-2 ${isUser ? 'flex-row-reverse' : ''}`;
-            
             const icon = isUser ? 
                 `<div class="w-8 h-8 rounded-full bg-stone-200 flex-shrink-0 flex items-center justify-center text-stone-600"><i class="fas fa-user text-xs"></i></div>` :
                 `<div class="w-8 h-8 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center text-amber-700"><i class="fas fa-robot text-xs"></i></div>`;
-            
             const bubble = isUser ?
                 `<div class="bg-amber-600 text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-sm">${text}</div>` :
                 `<div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-sm text-stone-700 border border-stone-200 markdown-body">${marked.parse(text)}</div>`;
@@ -1194,7 +1455,6 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Handle Send
         async function handleChat() {
             const text = chatInput.value.trim();
             if (!text) return;
@@ -1202,7 +1462,6 @@
             addMessage(text, true);
             chatInput.value = '';
             
-            // Show typing indicator
             const typingDiv = document.createElement('div');
             typingDiv.id = 'typingIndicator';
             typingDiv.className = 'flex gap-2';
@@ -1217,16 +1476,11 @@
             chatMessages.appendChild(typingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            const context = `You are a knowledgeable "Sthapati" (traditional Indian architect) and scholar. 
-            You are assisting a user on a website about "Shilpa-Vijnana: Sacred Architecture of India".
-            Answer questions about Indian temples, history, engineering, and the specific temples listed on this site (Konark, Thanjavur, Belur, Ellora, etc.).
-            Keep answers concise (under 100 words) but informative. Use a polite, scholarly tone.`;
-
+            const context = `You are a knowledgeable "Sthapati" (traditional Indian architect) and scholar assisting on a website about "Shilpa-Vijnana: Sacred Architecture of India". Answer questions about Indian temples, history, engineering, and specific temples (Konark, Thanjavur, Belur, Ellora, etc.). Keep answers concise (under 100 words).`;
             const fullPrompt = `${context}\n\nUser Question: ${text}`;
             
             const response = await callGemini(fullPrompt);
             
-            // Remove typing indicator
             document.getElementById('typingIndicator').remove();
             
             if (response) {
@@ -1242,4 +1496,3 @@
     </script>
 </body>
 </html>
-
