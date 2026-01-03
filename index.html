@@ -1287,7 +1287,7 @@
         });
 
         // --- GEMINI API INTEGRATION ---
-        const apiKey = "AIzaSyB4qcU1-beuk4ChBOMEMJawoY4uFg_JLMs"; // API Key injected by environment
+        const apiKey = "AIzaSyAnmsK1DZdYld4BEr_DYkNetGmJT_ctvis"; // API Key injected by environment
 
         async function callGemini(prompt) {
             if (!apiKey) {
@@ -1414,6 +1414,31 @@
                 q: "Which statement best explains why Hoysala temples appear visually complex yet structurally stable?",
                 options: ["Use of hidden metal reinforcements", "Overengineering of foundations", "Controlled repetition of geometric modules", "Randomized sculptural layering"],
                 answer: 2
+            },
+            {
+                q: "The most commonly used material in Hoysala temples is:",
+                options: ["Granite", "Marble", "Soapstone (Chloritic schist)", "Sandstone"],
+                answer: 2
+            },
+            {
+                q: "The Vesara style of temple architecture is a combination of:",
+                options: ["Nagara and Buddhist styles", "Dravidian and Islamic styles", "Nagara and Dravidian styles", "Jain and Hindu styles"],
+                answer: 2
+            },
+            {
+                q: "Hoysala pillars are known for:",
+                options: ["Square shape", "Rough finish", "Lathe-turned, polished surfaces", "Wooden structure"],
+                answer: 2
+            },
+            {
+                q: "Which Hoysala temple is dedicated to Lord Vishnu?",
+                options: ["Chennakesava Temple", "Hoysaleswara Temple", "Brihadeeswara Temple", "Lingaraja Temple"],
+                answer: 0
+            },
+            {
+                q: "The decorative band of sculptures around Hoysala temples is known as:",
+                options: ["Vimana", "Frieze", "Torana", "Kalasha"],
+                answer: 1
             }
         ];
 
